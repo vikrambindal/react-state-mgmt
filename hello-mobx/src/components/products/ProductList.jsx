@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
+import './Products.css';
 
 @observer
 export default class ProductList extends Component {
@@ -17,6 +18,7 @@ export default class ProductList extends Component {
 
         return (
         <div>
+            {products.length === 0 ? <p>No Products currently exist</p> :
             <table>
                 <thead>
                     <tr>
@@ -26,13 +28,13 @@ export default class ProductList extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.length === 0 ? <tr><td colSpan="3">No products exist</td></tr> : prodHtml}
+                    {prodHtml}
                     <tr>
                         <td colSpan="2">Total Price</td>
                         <td>{totalPrice}</td>
                     </tr>
                 </tbody>
-            </table>
+            </table>}
         </div>
     )}
 }

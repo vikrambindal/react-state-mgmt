@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
 import './App.css';
 import { observer } from 'mobx-react';
-import ProductList from './components/ProductList';
+import ProductList from './components/products/ProductList';
+import ProductAdd from './components/products/ProductAdd';
 
 @observer
 class App extends Component {
 
-  addProduct() {
-    this.props.store.addProduct(document.getElementById('productName').value,
-                                document.getElementById('productDescription').value,
-                                document.getElementById('price').value
-                              );
+  constructor(props) {
+    super(props);
+    this.addProduct = this.addProduct.bind(this);
+  }
+
+  addProduct(name, description, price) {
+    var nameElem = document.getElementById('productName');
+    var descriptionElem = document.getElementById('productDescription');
+    var priceElem = document.getElementById('price');
+    
+    this.props.store.addProduct(nameElem.value, descriptionElem.value,priceElem.value);
+
+    nameElem.value = '';
+    descriptionElem.value = '';
+    priceElem.value = '';
   }
 
   render() {
 
    return (
-      <div className="App">
+      <div>
       <h1>Products</h1>
-        <div>
-            <input type="text" id="productName"/>
-            <input type="text" id="productDescription"/>
-            <input type="text" id="price"/>
-            <button type="submit" onClick={() => this.addProduct()}>Add</button>
-        </div>
+        <ProductAdd onAddProduct={this.addProduct}/>
         <ProductList store={this.props.store}/>
       </div>
     );

@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+}
+
+table thead tr td {
+    font-weight: bold;
+    padding: 4em 6em 1em 0;
+}
+
+table tbody tr:last-child {
+    font-weight: bold;
+}
+  
+div {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+div input {
+    background: #fff;
+    border: 1px solid #9c9c9c;
+}
+div button {
+    background: lightgrey;
+    padding: 0.7em;
+    border: 0;
+}
+div button:hover {
+    background: gold;
+}
+
+label {
+    text-align: left;
+    display: block;
+    padding: 0.5em 1.5em 0.5em 0;
+}
+
+input {
+    width: 100%;
+    padding: 0.7em;
+    margin-bottom: 0.5rem;
+}
+/* input:focus {
+    outline: 3px solid gold;
+} */
+
+@media (min-width: 400px) {
+    div {
+        overflow: hidden;
+    }
+
+    label {
+        float: left;
+        width: 200px;
+    }
+
+    input {
+        float: left;
+        width: calc(100% - 200px);
+    }
+
+    button {
+        float: right;
+        width: calc(100% - 200px);
+    }
+}
+  
